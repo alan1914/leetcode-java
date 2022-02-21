@@ -31,14 +31,23 @@ Output: [8,9,9,9,0,0,0,1]
 
 ## Constraints:
 
-0 <= s.length <= 5 * 104
-s consists of English letters, digits, symbols and spaces.
-
-## 解题思路
-
 The number of nodes in each linked list is in the range [1, 100].
 0 <= Node.val <= 9
 It is guaranteed that the list represents a number that does not have leading zeros.
+
+## 解题思路
+
+需要注意的是各种进位问题。
+
+极端情况，例如
+
+```
+Input: (9 -> 9 -> 9 -> 9 -> 9) + (1 -> )
+Output: 0 -> 0 -> 0 -> 0 -> 0 -> 1
+```
+
+为了处理方法统一，可以先建立一个虚拟头结点，这个虚拟头结点的 Next 指向真正的 head，这样 head 不需要单独处理，直接 while 循环即可。
+另外判断循环终止的条件不用是 p.Next ！= nil，这样最后一位还需要额外计算，循环终止条件应该是 p != nil。
 
 ## 代码
 
