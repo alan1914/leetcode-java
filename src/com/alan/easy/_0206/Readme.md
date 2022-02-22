@@ -31,10 +31,22 @@ The number of nodes in the list is the range [0, 5000].
 
 ## 解题思路
 
-
+头插法
 
 ## 代码
 
 ```java
+   public ListNode reverseList(ListNode head) {
   
+          ListNode dummy = new ListNode(-1, head);
+          ListNode pre = dummy;
+          ListNode cur = pre.next;
+          while (null != cur && null != cur.next) {
+              ListNode temp = cur.next;
+              cur.next = temp.next;
+              temp.next = pre.next;
+              pre.next = temp;
+          }
+          return dummy.next;
+      }
 ```
