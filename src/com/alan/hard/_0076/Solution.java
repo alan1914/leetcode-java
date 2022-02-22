@@ -1,4 +1,4 @@
-package com.alan.medium._0076;
+package com.alan.hard._0076;
 
 /**
  * @author shiml
