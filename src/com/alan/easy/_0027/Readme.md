@@ -1,4 +1,4 @@
-# 704. Binary Search
+# 27. Remove Element
 
 ## 题目
 
