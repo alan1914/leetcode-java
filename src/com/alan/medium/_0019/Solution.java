@@ -5,6 +5,25 @@ package com.alan.medium._0019;
  * @date 2022/2/15 3:06 下午
  */
 public class Solution {
+    public ListNode removeNthFromEnd(ListNode head, int n) {
+
+        ListNode dummy = new ListNode(-1, head);
+        ListNode fast = dummy;
+        for (int i = 0; i < n + 1; i++) {
+            fast = fast.next;
+        }
+
+        ListNode slow = dummy;
+        while (null != fast) {
+            slow = slow.next;
+            fast = fast.next;
+        }
+
+        slow.next = slow.next.next;
+
+        return dummy.next;
+    }
+
 
 //    public ListNode removeNthFromEnd(ListNode head, int n) {
 //
@@ -29,36 +48,36 @@ public class Solution {
 //        return start.next;
 //    }
 
-    private ListNode removeNthFromEnd(ListNode head, int n) {
-
-        int count = 0;
-        ListNode temp = head;
-
-        // get length
-        while (null != temp) {
-            temp = temp.next;
-            count++;
-        }
-
-        if (count == 1) {
-            return null;
-        }
-
-        int c = count - n;
-        if (c == 0) {
-            return head.next;
-        }
-
-        ListNode t = head;
-        // jump to the end of n^th node
-        for (int i = 0; i < c - 1; i++) {
-            t = t.next;
-        }
-
-        t.next = t.next.next;
-
-        return head;
-    }
+//    private ListNode removeNthFromEnd(ListNode head, int n) {
+//
+//        int count = 0;
+//        ListNode temp = head;
+//
+//        // get length
+//        while (null != temp) {
+//            temp = temp.next;
+//            count++;
+//        }
+//
+//        if (count == 1) {
+//            return null;
+//        }
+//
+//        int c = count - n;
+//        if (c == 0) {
+//            return head.next;
+//        }
+//
+//        ListNode t = head;
+//        // jump to the end of n^th node
+//        for (int i = 0; i < c - 1; i++) {
+//            t = t.next;
+//        }
+//
+//        t.next = t.next.next;
+//
+//        return head;
+//    }
 
     public static void main(String[] args) {
 
