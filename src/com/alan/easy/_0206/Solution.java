@@ -7,17 +7,14 @@ package com.alan.easy._0206;
 public class Solution {
 
     public ListNode reverseList(ListNode head) {
-
-        ListNode dummy = new ListNode(-1, head);
-        ListNode pre = dummy;
-        ListNode cur = pre.next;
-        while (null != cur && null != cur.next) {
-            ListNode temp = cur.next;
-            cur.next = temp.next;
-            temp.next = pre.next;
-            pre.next = temp;
+        ListNode pre = new ListNode(0, head);
+        while (null == head) {
+            ListNode temp = head.next;
+            head.next = pre;
+            pre = head;
+            head = temp;
         }
-        return dummy.next;
+        return head;
     }
 
     public static void main(String[] args) {
@@ -29,8 +26,7 @@ public class Solution {
         ListNode temp = list1;
         for (int i = 0; i < 5; i++) {
             temp.next = new ListNode(i + 1);
-            temp.next.next = new ListNode(i + 1);
-            temp = temp.next.next;
+            temp = temp.next;
         }
 
         Solution solution = new Solution();

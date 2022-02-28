@@ -8,34 +8,60 @@ public class Solution {
 
     public ListNode detectCycle(ListNode head) {
 
-        if (head == null || head.next == null){
-            return null;
-        }
-
         ListNode slow = head;
         ListNode fast = head;
 
         while (null != fast && null != fast.next) {
-
             slow = slow.next;
             fast = fast.next.next;
             if (slow == fast) {
                 break;
             }
-
         }
 
-        if (slow == fast && slow != null) {
-
-            while (slow != head) {
+        if (slow == fast && null != slow) {
+            while (null != slow) {
                 slow = slow.next;
                 head = head.next;
+                if (head == slow) {
+                    return head;
+                }
             }
-            return head;
         }
 
         return null;
     }
+
+//    public ListNode detectCycle(ListNode head) {
+//
+//        if (head == null || head.next == null){
+//            return null;
+//        }
+//
+//        ListNode slow = head;
+//        ListNode fast = head;
+//
+//        while (null != fast && null != fast.next) {
+//
+//            slow = slow.next;
+//            fast = fast.next.next;
+//            if (slow == fast) {
+//                break;
+//            }
+//
+//        }
+//
+//        if (slow == fast && slow != null) {
+//
+//            while (slow != head) {
+//                slow = slow.next;
+//                head = head.next;
+//            }
+//            return head;
+//        }
+//
+//        return null;
+//    }
 
     public static void main(String[] args) {
 
